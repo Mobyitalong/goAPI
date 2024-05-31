@@ -10,7 +10,7 @@
 		"ghcr.io/devcontainers/features/git:1": {}
 	},
 	"mounts": [
-		"type=bind,source=~/.ssh/id_GitHub,target=/home/gopher/.ssh/id_GitHub,readonly",
+		"type=bind,source=~/.ssh/moby_github,target=/home/gopher/.ssh/moby_github,readonly",
 		"type=bind,source=${localWorkspaceFolder}/.devcontainer/ssh_config,target=/home/gopher/.ssh/config,readonly"
 	]
 }
