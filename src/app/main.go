@@ -10,6 +10,7 @@ import (
 // Define a home handler function to write a byte slice as response body.
 // NB: Handlers are responsible for executing application logic and writing HTTP response headers + bodies
 func home(w http.ResponseWriter, r *http.Request) {
+	w.Header().Add("Server", "Go")
 	w.Write([]byte("Hello from the app"))
 }
 
@@ -20,8 +21,7 @@ func snippetView(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	msg := fmt.Sprintf("Display a specific snippet with ID %d...", id)
-	w.Write([]byte(msg))
+	fmt.Fprintf(w, "Display a specific snippet with ID %d", id)
 }
 
 func snippetCreate(w http.ResponseWriter, r *http.Request) {
@@ -29,6 +29,7 @@ func snippetCreate(w http.ResponseWriter, r *http.Request) {
 }
 
 func snippetCreatePost(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusCreated)
 	w.Write([]byte("Save a new snippet..."))
 }
 
